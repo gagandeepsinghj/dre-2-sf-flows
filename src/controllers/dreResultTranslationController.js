@@ -22,12 +22,8 @@ class DREResultTranslationController {
     async translateResultsToFlowNodes(req, res) {
         this.logger.info('Starting DRE results translation process');
         try {
-            this.logger.debug('Validating DRE type');
-            await this._validateDREType();
-
             this.logger.debug('Extracting result groups');
             const resultGroups = await this._extractResultGroups();
-
             this.logger.debug('Result groups extracted', { groupCount: resultGroups.length });
 
             this.logger.debug('Translating DRE groups');
@@ -53,22 +49,6 @@ class DREResultTranslationController {
                 error: 'Failed to translate DRE results to flow nodes',
                 details: error.message
             });
-        }
-    }
-
-    /**
-     * @private
-     * @description Validates that the DRE type is "Automation"
-     * @throws {Error} If DRE type is not "Automation"
-     */
-    async _validateDREType() {
-        const rulesPath = path.join(__dirname, '../../DRERules.json');
-        const dreRules = JSON.parse(await fs.readFile(rulesPath, 'utf8'));
-
-        for (const rule of dreRules) {
-            if (rule.DRE__Type__c !== "Automation") {
-                throw new Error(`Currently, "${rule.DRE__Type__c}" rule type is not supported. Only Automation type is supported.`);
-            }
         }
     }
 
