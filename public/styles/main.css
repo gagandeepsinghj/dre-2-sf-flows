@@ -1,0 +1,340 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #f0f2f5;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 10px;
+    height: calc(100vh - 30px);
+    animation: fadeIn 0.8s ease-in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #1a73e8;
+    margin-bottom: 15px;
+    animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.upload-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 150px);
+    animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.preview-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    height: calc(100vh - 150px);
+}
+
+.content-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.input-column, .output-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 30px;
+    height: 100%;
+    animation: slideIn 0.6s ease-out;
+    position: relative;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.drop-zone {
+    background-color: white;
+    border: 2px dashed #1a73e8;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    max-width: 500px;
+}
+
+.drop-zone.dragover {
+    border-color: #34a853;
+    background-color: rgba(52, 168, 83, 0.05);
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.drop-zone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-btn {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-btn:hover {
+    background-color: #1557b0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-btn:active {
+    transform: translateY(0);
+}
+
+.convert-btn {
+    background-color: #34a853;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    height: fit-content;
+    align-self: center;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(52, 168, 83, 0.4);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(52, 168, 83, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(52, 168, 83, 0);
+    }
+}
+
+.convert-btn:hover {
+    background-color: #2d8e47;
+    transform: translateY(-2px);
+}
+
+.file-content {
+    width: 100%;
+    height: calc(100vh - 250px);
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: none;
+    font-family: monospace;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.file-content:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.clear-btn {
+    background-color: #ea4335;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.clear-btn:hover {
+    background-color: #d33426;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(234, 67, 53, 0.2);
+}
+
+.deploy-btn {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.deploy-btn:hover {
+    background-color: #1557b0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(26, 115, 232, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+#subheader {
+    position: relative;
+    left: 7.8em;
+    bottom: 20px;
+    animation: fadeIn 0.8s ease-in;
+}
+
+#subheader span {
+    font-size: 12px;
+    position: relative;
+    bottom: 15px;
+    left: 7px;
+    color: #bdbdbd;
+}
+
+/* Add smooth transitions for all interactive elements */
+button, input, textarea {
+    transition: all 0.3s ease;
+}
+
+/* Add loading animation for the convert button when disabled */
+.convert-btn:disabled {
+    animation: loading 1.5s infinite;
+    background-color: #92c4a3;
+}
+
+@keyframes loading {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Progress bar styles */
+.progress-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: rgba(26, 115, 232, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin: 10px 0 1px 0;
+}
+
+.progress-bar-container.active {
+    opacity: 1;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #1a73e8;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
