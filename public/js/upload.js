@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle dropped files
     dropZone.addEventListener('drop', handleDrop, false);
-    
+
     // Handle file selection via button
     selectFileBtn.addEventListener('click', () => {
         fileInput.click();
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle convert button click
     convertBtn.addEventListener('click', handleConvert);
 
-    function preventDefaults (e) {
+    function preventDefaults(e) {
         e.preventDefault();
         e.stopPropagation();
     }
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         progress.classList.add('active');
         const progressBar = progress.querySelector('.progress-bar');
         progressBar.style.width = '0%';
-        
+
         // Animate to 90% quickly
         setTimeout(() => {
             progressBar.style.width = '90%';
@@ -79,14 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function completeProgress() {
         const progressBar = progress.querySelector('.progress-bar');
-        
+
         // Complete to 100%
         progressBar.style.width = '100%';
-        
+
         // Hide after completion
         setTimeout(() => {
             progress.classList.remove('active');
-            
+
             // Reset progress
             setTimeout(() => {
                 progressBar.style.width = '0%';
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const data = await response.json();
-            
+
             if (!data.success) {
                 throw new Error(data.error || 'Conversion failed');
             }
@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show and update the output textarea and deploy button
             outputContent.classList.remove('hidden');
             deployBtn.classList.remove('hidden');
-            outputContent.value = JSON.stringify(data.processedRules, null, 2);
-            
+            outputContent.value = JSON.stringify(data.flowContent, null, 2);
+
         } catch (error) {
             alert('Error during conversion: ' + error.message);
         } finally {
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Pretty print the JSON
                     const prettyJson = JSON.stringify(JSON.parse(content), null, 2);
                     fileContent.value = prettyJson;
-                    
+
                     // Show preview section and hide upload section
                     uploadSection.classList.add('hidden');
                     previewSection.classList.remove('hidden');
