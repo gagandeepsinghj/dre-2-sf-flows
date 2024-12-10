@@ -2,6 +2,7 @@ const jsforce = require('jsforce');
 const fs = require('fs').promises;
 const path = require('path');
 const AdmZip = require('adm-zip');
+const Logger = require('../helpers/Logger');
 
 /**
  * @class FlowDeploymentController
@@ -9,21 +10,7 @@ const AdmZip = require('adm-zip');
  */
 class FlowDeploymentController {
     constructor() {
-        this.logger = {
-            info: (message, context = {}) => {
-                console.log(`[INFO] ${new Date().toISOString()} - ${message}`, context);
-            },
-            error: (message, error, context = {}) => {
-                console.error(`[ERROR] ${new Date().toISOString()} - ${message}`, {
-                    error: error.message,
-                    stack: error.stack,
-                    ...context
-                });
-            },
-            debug: (message, context = {}) => {
-                console.debug(`[DEBUG] ${new Date().toISOString()} - ${message}`, context);
-            }
-        };
+        this.logger = new Logger('FlowDeploymentController');
     }
 
     /**

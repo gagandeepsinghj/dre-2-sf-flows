@@ -2,6 +2,7 @@ const liteLLM = require('../config/litellm');
 const config = require('../config/config');
 const fs = require('fs').promises;
 const path = require('path');
+const Logger = require('../helpers/Logger');
 
 /**
  * @class DREResultTranslationController
@@ -9,22 +10,7 @@ const path = require('path');
  */
 class DREResultTranslationController {
     constructor() {
-        // Initialize logger
-        this.logger = {
-            info: (message, context = {}) => {
-                console.log(`[INFO] ${new Date().toISOString()} - ${message}`, context);
-            },
-            error: (message, error, context = {}) => {
-                console.error(`[ERROR] ${new Date().toISOString()} - ${message}`, {
-                    error: error.message,
-                    stack: error.stack,
-                    ...context
-                });
-            },
-            debug: (message, context = {}) => {
-                console.debug(`[DEBUG] ${new Date().toISOString()} - ${message}`, context);
-            }
-        };
+        this.logger = new Logger('DREResultTranslationController');
     }
 
     /**
@@ -38,10 +24,10 @@ class DREResultTranslationController {
         try {
             this.logger.debug('Validating DRE type');
             await this._validateDREType();
-            
+
             this.logger.debug('Extracting result groups');
             const resultGroups = await this._extractResultGroups();
-            
+
             this.logger.debug('Result groups extracted', { groupCount: resultGroups.length });
 
             this.logger.debug('Translating DRE groups');
@@ -78,7 +64,7 @@ class DREResultTranslationController {
     async _validateDREType() {
         const rulesPath = path.join(__dirname, '../../DRERules.json');
         const dreRules = JSON.parse(await fs.readFile(rulesPath, 'utf8'));
-        
+
         for (const rule of dreRules) {
             if (rule.DRE__Type__c !== "Automation") {
                 throw new Error(`Currently, "${rule.DRE__Type__c}" rule type is not supported. Only Automation type is supported.`);
@@ -173,11 +159,7 @@ class DREResultTranslationController {
                 translatedContent = [];
             }
 
-            // Safely map the translations to the result groups
-            const translatedGroups = resultGroups.map((group, index) => ({
-                ...group,
-                translation: Array.isArray(translatedContent) ? translatedContent[index] || {} : {}
-            }));
+            const translatedGroups = translatedContent;
 
             this.logger.debug('Groups translation completed', {
                 translatedCount: translatedGroups.length
@@ -235,6 +217,7 @@ class DREResultTranslationController {
 5. Validation:
 - Validate all xml nodes against Salesforce Flow metadata specifications
 - Remove any unsupported nodes or attributes
+- Validate the flow "processType" and flow elements, "AutoLaunchedFlow" should not include any screens or choices
 
 Format the response as a complete Flow metadata XML file. Only return the Flow metadata xml content. The return xml should be ready to deploy to Salesforce.`
         };
