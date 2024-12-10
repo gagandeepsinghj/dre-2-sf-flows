@@ -26,7 +26,12 @@ class DreRuleTranslationController {
   async translateDreRuleToFlow(req, res) {
     let dreRuleCriteria = await this.extractDreRuleFromJson('sampleFile.json');
     console.log('Extraction complete: ' + JSON.stringify(dreRuleCriteria));
-    await this.generateFlow(dreRuleCriteria, res);
+    const flowData = await this.generateFlow(dreRuleCriteria, res);
+    res.json({
+      success: true,
+      dreRuleCriteria,
+      flowData: flowData
+    });
   }
   
   async extractDreRuleFromJson(filename) {
@@ -69,7 +74,7 @@ class DreRuleTranslationController {
                 - Use SystemModeWithSharing for runInMode
   
                 2. Required Flow Components:
-                - Record Create/Update nodes with proper field mappings
+                - Record Create or Update nodes with proper field mappings
                 - Proper node positioning using locationX/Y coordinates
                 - Clear connector references between nodes
   
@@ -110,6 +115,10 @@ class DreRuleTranslationController {
           success: true, 
           response: response.data.choices[0].message.content 
       });
+
+      await fs.writeFile(flowMetaPath, response.data.choices[0].message.content, 'utf8');
+
+      return response.data.choices[0].message.content;
   }
 }
 
