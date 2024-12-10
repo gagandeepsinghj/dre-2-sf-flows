@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <description>When an inspection is closed with status Closed Duplicate Violation, Complaint is set to Closed Duplicate Violation</description>
+    <interviewLabel>Code Enforcement - Inspection - Closed duplicate violation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Code Enforcement - Inspection - Closed duplicate violation</label>
+    <processMetadata>
+        <description>When an inspection is closed with status Closed Duplicate Violation, Complaint is set to Closed Duplicate Violation</description>
+        <name>Code Enforcement - Inspection - Closed duplicate violation</name>
+    </processMetadata>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Complaint</name>
+        <label>Update Complaint</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <inputReference>$Record.MUSW__Complaint2__c</inputReference>
+        <inputAssignments>
+            <field>MUSW__Status__c</field>
+            <value>
+                <stringValue>Closed - Duplicate Violation</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>MUSW__Closed_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>MUSW__Complaint2__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Complaint</targetReference>
+        </connector>
+        <filterFormula>{!$Record.MUSW__Status__c} = "Closed - Duplicate Violation" &amp;&amp; {!$Record.IsClosed__c} = true &amp;&amp; ISCHANGED({!$Record.MUSW__Status__c})</filterFormula>
+        <object>MUSW__Inspection__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+        <conditions>
+            <leftValueReference>$Record.MUSW__Complaint2__r.MUSW__Status__c</leftValueReference>
+            <operator>NotEqualTo</operator>
+            <rightValue>
+                <stringValue>Closed</stringValue>
+            </rightValue>
+        </conditions>
+    </start>
+    <status>Active</status>
+    <runInMode>SystemModeWithSharing</runInMode>
+</Flow>
