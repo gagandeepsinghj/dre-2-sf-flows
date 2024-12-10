@@ -1,0 +1,258 @@
+[
+  {
+    "attributes": {
+      "type": "DRE__DRE_Rule__c",
+      "url": "/services/data/v62.0/sobjects/DRE__DRE_Rule__c/a1t4o0000003Yy9AAE"
+    },
+    "Id": "a1t4o0000003Yy9AAE",
+    "Name": "Code Enforcement - Inspection - Closed duplicate violation",
+    "DRE__Description__c": "When an inspection is closed with status Closed Duplicate Violation, Complaint is set to Closed Duplicate Violation",
+    "DRE__Effective_Start_Date__c": "2017-09-01",
+    "DRE__Event__c": "Edited",
+    "DRE__IsActive__c": true,
+    "DRE__Object_Name__c": "MUSW__Inspection__c",
+    "DRE__Order__c": 999,
+    "DRE__Run_Once__c": true,
+    "DRE__Title__c": "<a href=\"/a1t4o0000003Yy9\" target=\"_blank\">Code Enforcement - Inspection - Closed duplicate violation</a> - MUSW__Inspection__c Edited (Type: Automation, Order: 999, Run Once, Active)",
+    "DRE__Type__c": "Automation",
+    "DRE__Uid__c": "jwikkerink_pt1@basicgov.com 2019-10-16 12:26:28:444 -519958826",
+    "DRE__Batch_Randomize_Rounding_Method__c": "CEILING",
+    "DRE__Batch_Size__c": 50,
+    "DRE__Batch_Threshold_Maximum__c": 50000000,
+    "DRE__Batch_Threshold_Minimum__c": 1,
+    "DRE__Field_Index__c": null,
+    "DRE__IsRecalculated__c": false,
+    "DRE__Run_in_Bulk_Mode__c": false,
+    "DRE__Scope__c": "\"Closed  Duplicate Violation\"",
+    "DRE__DRE_Result_Groups__r": {
+      "totalSize": 1,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1wxIAA"
+          },
+          "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+          "Id": "a1rKh000001b1wxIAA",
+          "Name": "DRERESG-00009720",
+          "DRE__Action_Type__c": "UpdateRecord",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Complaint2__c",
+          "DRE__Object_Path__c": "{!MUSW__Inspection__c.MUSW__Complaint2__r}",
+          "DRE__Object_Relationship__c": "Lookup",
+          "DRE__Remove_From_Recycle_Bin__c": false,
+          "DRE__Uid__c": "jwikkerink_pt1@basicgov.com 2019-10-16 12:26:28:619 2065016432"
+        }
+      ]
+    },
+    "DRE__DRE_Results__r": {
+      "totalSize": 2,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYpCIAW"
+          },
+          "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+          "Id": "a1sKh000007LYpCIAW",
+          "Name": "DRERSLT-00024741",
+          "DRE__DRE_Group__c": "a1rKh000001b1wxIAA",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__status__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Closed - Duplicate Violation",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1wxIAA"
+            },
+            "Id": "a1rKh000001b1wxIAA",
+            "Name": "DRERESG-00009720",
+            "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+            "DRE__Action_Type__c": "UpdateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Complaint2__c",
+            "DRE__Object_Path__c": "{!MUSW__Inspection__c.MUSW__Complaint2__r}",
+            "DRE__Object_Relationship__c": "Lookup",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "jwikkerink_pt1@basicgov.com 2019-10-16 12:26:28:619 2065016432"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYpDIAW"
+          },
+          "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+          "Id": "a1sKh000007LYpDIAW",
+          "Name": "DRERSLT-00024742",
+          "DRE__DRE_Group__c": "a1rKh000001b1wxIAA",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__closed_date__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "=TODAY()",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1wxIAA"
+            },
+            "Id": "a1rKh000001b1wxIAA",
+            "Name": "DRERESG-00009720",
+            "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+            "DRE__Action_Type__c": "UpdateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Complaint2__c",
+            "DRE__Object_Path__c": "{!MUSW__Inspection__c.MUSW__Complaint2__r}",
+            "DRE__Object_Relationship__c": "Lookup",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "jwikkerink_pt1@basicgov.com 2019-10-16 12:26:28:619 2065016432"
+          }
+        }
+      ]
+    },
+    "DRE__DRE_Filters__r": {
+      "totalSize": 3,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttMNIAY"
+          },
+          "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+          "Id": "a1qKh000005ttMNIAY",
+          "Name": "DREFLTR-00027306",
+          "DRE__DRE_Group__c": "a1pKh00000DEuvdIAD",
+          "DRE__Field__c": "musw__status__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "CHANGED TO",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Closed - Duplicate Violation",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuvdIAD"
+            },
+            "Id": "a1pKh00000DEuvdIAD",
+            "Name": "DREFLTG-00008939",
+            "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Inspection__c",
+            "DRE__Object_Path__c": "{!MUSW__Inspection__c}",
+            "DRE__Object_Relationship__c": "Record",
+            "DRE__Uid__c": "jwikkerink_pt1@basicgov.com 2019-10-16 12:26:28:494 -1525352033",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttMOIAY"
+          },
+          "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+          "Id": "a1qKh000005ttMOIAY",
+          "Name": "DREFLTR-00027307",
+          "DRE__DRE_Group__c": "a1pKh00000DEuvdIAD",
+          "DRE__Field__c": "isclosed__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Yes",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuvdIAD"
+            },
+            "Id": "a1pKh00000DEuvdIAD",
+            "Name": "DREFLTG-00008939",
+            "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Inspection__c",
+            "DRE__Object_Path__c": "{!MUSW__Inspection__c}",
+            "DRE__Object_Relationship__c": "Record",
+            "DRE__Uid__c": "jwikkerink_pt1@basicgov.com 2019-10-16 12:26:28:494 -1525352033",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttMPIAY"
+          },
+          "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+          "Id": "a1qKh000005ttMPIAY",
+          "Name": "DREFLTR-00027308",
+          "DRE__DRE_Group__c": "a1pKh00000DEuveIAD",
+          "DRE__Field__c": "musw__status__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "!=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Closed",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuveIAD"
+            },
+            "Id": "a1pKh00000DEuveIAD",
+            "Name": "DREFLTG-00008940",
+            "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Complaint2__c",
+            "DRE__Object_Path__c": "{!MUSW__Inspection__c.MUSW__Complaint2__r}",
+            "DRE__Object_Relationship__c": "Lookup",
+            "DRE__Uid__c": "jwikkerink_pt1@basicgov.com 2019-10-16 12:26:28:563 1661425652",
+            "DRE__Type__c": "Normal"
+          }
+        }
+      ]
+    },
+    "DRE__DRE_Filter_Groups__r": {
+      "totalSize": 2,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuvdIAD"
+          },
+          "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+          "Id": "a1pKh00000DEuvdIAD",
+          "Name": "DREFLTG-00008939",
+          "DRE__Condition__c": "Exists",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Inspection__c",
+          "DRE__Object_Path__c": "{!MUSW__Inspection__c}",
+          "DRE__Object_Relationship__c": "Record",
+          "DRE__Uid__c": "jwikkerink_pt1@basicgov.com 2019-10-16 12:26:28:494 -1525352033",
+          "DRE__Type__c": "Normal"
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuveIAD"
+          },
+          "DRE__DRE_Rule__c": "a1t4o0000003Yy9AAE",
+          "Id": "a1pKh00000DEuveIAD",
+          "Name": "DREFLTG-00008940",
+          "DRE__Condition__c": "Exists",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Complaint2__c",
+          "DRE__Object_Path__c": "{!MUSW__Inspection__c.MUSW__Complaint2__r}",
+          "DRE__Object_Relationship__c": "Lookup",
+          "DRE__Uid__c": "jwikkerink_pt1@basicgov.com 2019-10-16 12:26:28:563 1661425652",
+          "DRE__Type__c": "Normal"
+        }
+      ]
+    }
+  }
+]
