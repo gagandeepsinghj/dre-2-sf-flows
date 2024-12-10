@@ -2,6 +2,7 @@ const liteLLM = require('../config/litellm');
 const config = require('../config/config');
 const fs = require('fs').promises;
 const path = require('path');
+const Logger = require('../helpers/Logger');
 
 /**
  * @class DREResultTranslationController
@@ -9,22 +10,46 @@ const path = require('path');
  */
 class DREResultTranslationController {
     constructor() {
-        // Initialize logger
-        this.logger = {
-            info: (message, context = {}) => {
-                console.log(`[INFO] ${new Date().toISOString()} - ${message}`, context);
-            },
-            error: (message, error, context = {}) => {
-                console.error(`[ERROR] ${new Date().toISOString()} - ${message}`, {
-                    error: error.message,
-                    stack: error.stack,
-                    ...context
-                });
-            },
-            debug: (message, context = {}) => {
-                console.debug(`[DEBUG] ${new Date().toISOString()} - ${message}`, context);
-            }
-        };
+        this.logger = new Logger('DREResultTranslationController');
+    }
+
+    /**
+     * @description Translates a specific DRE rule and its result groups into flow nodes
+     * @param {Object} dreRule - The DRE rule object containing result groups and results
+     * @param {string} flowDefinitionPath - Path to the flow definition file
+     * @returns {Promise<string>} Generated flow nodes
+     * @throws {Error} If translation process fails
+     */
+    async translateRuleToFlowNodes(dreRule, flowDefinitionPath) {
+        this.logger.info('Starting DRE rule translation process', { ruleName: dreRule.Name });
+        try {
+            const resultGroups = (dreRule.DRE__DRE_Result_Groups__r?.records || []).map(group => ({
+                Id: group.Id,
+                Name: group.Name,
+                DRE__Description__c: group.DRE__Description__c,
+                results: dreRule.DRE__DRE_Results__r?.records.filter(r =>
+                    r.DRE__DRE_Group__c === group.Id && r.DRE__IsActive__c === true
+                ) || []
+            }));
+
+            this.logger.debug('Result groups extracted from rule', {
+                groupCount: resultGroups.length,
+                totalResults: resultGroups.reduce((acc, group) => acc + group.results.length, 0)
+            });
+
+            const translatedGroups = await this._translateDREGroups(resultGroups);
+            this.logger.debug('Groups translated', { translatedCount: translatedGroups.length });
+
+            const flowNodes = await this._generateFlowNodes(translatedGroups, flowDefinitionPath);
+            this.logger.debug('Flow nodes generated', { nodesLength: flowNodes.length });
+
+            return flowNodes;
+        } catch (error) {
+            this.logger.error('Rule translation process failed', error, {
+                ruleName: dreRule.Name
+            });
+            throw error;
+        }
     }
 
     /**
@@ -36,26 +61,22 @@ class DREResultTranslationController {
     async translateResultsToFlowNodes(req, res) {
         this.logger.info('Starting DRE results translation process');
         try {
-            this.logger.debug('Validating DRE type');
-            await this._validateDREType();
-            
-            this.logger.debug('Extracting result groups');
-            const resultGroups = await this._extractResultGroups();
-            
-            this.logger.debug('Result groups extracted', { groupCount: resultGroups.length });
+            this.logger.debug('Reading DRE rules file');
+            const rulesPath = path.join(__dirname, '../../DRERules.json');
+            const dreRules = JSON.parse(await fs.readFile(rulesPath, 'utf8'));
 
-            this.logger.debug('Translating DRE groups');
-            const translatedGroups = await this._translateDREGroups(resultGroups);
-            this.logger.debug('Groups translated', { translatedCount: translatedGroups.length });
+            if (!dreRules || dreRules.length === 0) {
+                throw new Error('No DRE rules found in the file');
+            }
 
-            this.logger.debug('Generating flow nodes');
-            const flowNodes = await this._generateFlowNodes(translatedGroups);
-            this.logger.debug('Flow nodes generated', { nodesLength: flowNodes.length });
+            const firstRule = dreRules[0];
+            const flowMetaPath = path.join(__dirname, '../../', config.flowMeta.path);
+
+            const flowNodes = await this.translateRuleToFlowNodes(firstRule, flowMetaPath);
 
             this.logger.info('Translation process completed successfully');
             res.json({
                 success: true,
-                translatedGroups,
                 flowNodes: flowNodes
             });
         } catch (error) {
@@ -67,60 +88,6 @@ class DREResultTranslationController {
                 error: 'Failed to translate DRE results to flow nodes',
                 details: error.message
             });
-        }
-    }
-
-    /**
-     * @private
-     * @description Validates that the DRE type is "Automation"
-     * @throws {Error} If DRE type is not "Automation"
-     */
-    async _validateDREType() {
-        const rulesPath = path.join(__dirname, '../../DRERules.json');
-        const dreRules = JSON.parse(await fs.readFile(rulesPath, 'utf8'));
-        
-        for (const rule of dreRules) {
-            if (rule.DRE__Type__c !== "Automation") {
-                throw new Error(`Currently, "${rule.DRE__Type__c}" rule type is not supported. Only Automation type is supported.`);
-            }
-        }
-    }
-
-    /**
-     * @private
-     * @description Extracts result groups and their associated results from DRERules.json
-     * @returns {Promise<Array>} Array of result groups with their associated results
-     * @throws {Error} If file reading or parsing fails
-     */
-    async _extractResultGroups() {
-        const rulesPath = path.join(__dirname, '../../DRERules.json');
-        this.logger.debug('Reading DRE rules file', { path: rulesPath });
-
-        try {
-            const dreRules = JSON.parse(await fs.readFile(rulesPath, 'utf8'));
-            this.logger.debug('DRE rules file parsed successfully', { ruleCount: dreRules.length });
-
-            const resultGroups = dreRules.flatMap(rule => {
-                const groups = rule.DRE__DRE_Result_Groups__r?.records || [];
-                return groups.map(group => ({
-                    Id: group.Id,
-                    Name: group.Name,
-                    DRE__Description__c: group.DRE__Description__c,
-                    results: rule.DRE__DRE_Results__r?.records.filter(r =>
-                        r.DRE__DRE_Group__c === group.Id && r.DRE__IsActive__c === true
-                    ) || []
-                }));
-            });
-
-            this.logger.debug('Result groups extracted', {
-                groupCount: resultGroups.length,
-                totalResults: resultGroups.reduce((acc, group) => acc + group.results.length, 0)
-            });
-
-            return resultGroups;
-        } catch (error) {
-            this.logger.error('Failed to extract result groups', error, { rulesPath });
-            throw error;
         }
     }
 
@@ -173,11 +140,7 @@ class DREResultTranslationController {
                 translatedContent = [];
             }
 
-            // Safely map the translations to the result groups
-            const translatedGroups = resultGroups.map((group, index) => ({
-                ...group,
-                translation: Array.isArray(translatedContent) ? translatedContent[index] || {} : {}
-            }));
+            const translatedGroups = translatedContent?.groups || [];
 
             this.logger.debug('Groups translation completed', {
                 translatedCount: translatedGroups.length
@@ -197,12 +160,12 @@ class DREResultTranslationController {
      * @private
      * @description Generates flow nodes using LLM based on translated result groups
      * @param {Array} translatedGroups - Array of translated result groups with their results
+     * @param {string} flowDefinitionPath - Path to the flow definition file
      * @returns {Promise<string>} Generated flow nodes instructions
      * @throws {Error} If LLM API call fails
      */
-    async _generateFlowNodes(translatedGroups) {
-        const flowMetaPath = path.join(__dirname, '../../', config.flowMeta.path);
-        this.logger.debug('Reading Flow metadata file', { path: flowMetaPath });
+    async _generateFlowNodes(translatedGroups, flowDefinitionPath) {
+        this.logger.debug('Reading Flow metadata file', { path: flowDefinitionPath });
 
         const prompt = {
             role: "system",
@@ -235,6 +198,7 @@ class DREResultTranslationController {
 5. Validation:
 - Validate all xml nodes against Salesforce Flow metadata specifications
 - Remove any unsupported nodes or attributes
+- Validate the flow "processType" and flow elements, "AutoLaunchedFlow" should not include any screens or choices
 
 Format the response as a complete Flow metadata XML file. Only return the Flow metadata xml content. The return xml should be ready to deploy to Salesforce.`
         };
@@ -251,7 +215,7 @@ Format the response as a complete Flow metadata XML file. Only return the Flow m
                     },
                     {
                         role: "user",
-                        content: await fs.readFile(flowMetaPath, 'utf8')
+                        content: await fs.readFile(flowDefinitionPath, 'utf8')
                     }
                 ]
             });
@@ -261,7 +225,7 @@ Format the response as a complete Flow metadata XML file. Only return the Flow m
                 responseLength: response.data.choices[0].message.content.length
             });
 
-            await fs.writeFile(flowMetaPath, response.data.choices[0].message.content, 'utf8');
+            await fs.writeFile(flowDefinitionPath, response.data.choices[0].message.content, 'utf8');
 
             return response.data.choices[0].message.content;
         } catch (error) {
