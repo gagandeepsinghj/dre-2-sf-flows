@@ -27,7 +27,7 @@ class MainController {
             }
 
             // Parse the JSON string
-            let parsedJson = req.body.jsonString;
+            let parsedJson = JSON.parse(req.body.jsonString);
 
             // Process the rules through the validation controller
             const processedRules = this.dreValidationController.validateAndProcessRules(parsedJson);
