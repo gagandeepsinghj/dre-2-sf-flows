@@ -27,12 +27,7 @@ class MainController {
             }
 
             // Parse the JSON string
-            let parsedJson;
-            try {
-                parsedJson = JSON.parse(req.body.jsonString);
-            } catch (parseError) {
-                throw new Error('Invalid JSON string provided');
-            }
+            let parsedJson = req.body.jsonString;
 
             // Process the rules through the validation controller
             const processedRules = this.dreValidationController.validateAndProcessRules(parsedJson);
