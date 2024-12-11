@@ -343,3 +343,14 @@ button, input, textarea {
         width: 100%;
     }
 }
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #bdbdbd;
+    font-size: 12px;
+    animation: fadeIn 0.8s ease-in;
+}
