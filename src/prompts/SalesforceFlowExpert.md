@@ -82,6 +82,7 @@ This guide outlines the requirements and best practices for generating deployabl
     - value (the value to assign)
   - Remove assignments that don't modify variables or fields
   - Don't use assignments as flow markers or status indicators
+- Remove any Decision Element that does not have rules or meaningless or as template holder
 
 ### 5. Assignment Structure Example
 ```xml
