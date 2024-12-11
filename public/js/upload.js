@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const deployBtn = document.getElementById('deploy-btn');
     const progress = document.getElementById('progress');
 
+    // Store the flow filename after conversion
+    let currentFlowFilename = '';
+
     // Prevent default drag behaviors
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         dropZone.addEventListener(eventName, preventDefaults, false);
@@ -41,6 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle convert button click
     convertBtn.addEventListener('click', handleConvert);
+
+    // Handle deploy button click
+    deployBtn.addEventListener('click', handleDeploy);
 
     function preventDefaults(e) {
         e.preventDefault();
@@ -94,6 +100,55 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 
+    async function handleDeploy() {
+        try {
+            if (!currentFlowFilename) {
+                throw new Error('No flow filename available. Please convert the file first.');
+            }
+
+            deployBtn.disabled = true;
+            startProgress();
+
+            // Get the XML content directly from the output textarea
+            const xmlContent = outputContent.value;
+
+            // Create a parser to validate XML
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
+
+            // Check for parsing errors
+            if (xmlDoc.getElementsByTagName('parsererror').length > 0) {
+                throw new Error('Invalid XML content');
+            }
+
+            const response = await fetch('/api/deploy-flow', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    // will need to use currentFlowFilename to make this dynamic
+                    filename: currentFlowFilename,
+                    flowContent: xmlContent
+                })
+            });
+
+            const data = await response.json();
+
+            if (!data.success) {
+                throw new Error(data.error || 'Deployment failed');
+            }
+
+            alert('Flow deployed successfully!');
+
+        } catch (error) {
+            alert('Error during deployment: ' + error.message);
+        } finally {
+            completeProgress();
+            deployBtn.disabled = false;
+        }
+    }
+
     async function handleConvert() {
         try {
             convertBtn.disabled = true;
@@ -115,10 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(data.error || 'Conversion failed');
             }
 
+            // Store the filename from the response
+            currentFlowFilename = data.fileName;
+
             // Show and update the output textarea and deploy button
             outputContent.classList.remove('hidden');
             deployBtn.classList.remove('hidden');
-            outputContent.value = JSON.stringify(data.flowContent, null, 2);
+            // Set the XML content directly without JSON.stringify
+            outputContent.value = data.flowContent;
 
         } catch (error) {
             alert('Error during conversion: ' + error.message);
@@ -145,6 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Hide output content and deploy button when new file is loaded
                     outputContent.classList.add('hidden');
                     deployBtn.classList.add('hidden');
+                    // Reset the current flow filename
+                    currentFlowFilename = '';
                 } catch (error) {
                     alert('Invalid JSON file');
                     clearSelection();
@@ -164,5 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         deployBtn.classList.add('hidden');
         uploadSection.classList.remove('hidden');
         previewSection.classList.add('hidden');
+        // Reset the current flow filename
+        currentFlowFilename = '';
     }
 });

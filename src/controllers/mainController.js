@@ -1,13 +1,15 @@
 const fs = require('fs').promises;
 const path = require('path');
 const DREValidationController = require('./dreValidationController');
-const DreRuleTranslationController = require('./dreRuleTranslationController');
+const DRETranslationController = require('./dreTranslationController');
+const FlowGenerationController = require('./flowGenerationController');
 const Logger = require('../helpers/Logger');
 
 class MainController {
     constructor() {
         this.dreValidationController = new DREValidationController();
-        this.dreRuleTranslationController = new DreRuleTranslationController();
+        this.dreTranslationController = new DRETranslationController();
+        this.flowGenerationController = new FlowGenerationController();
         this.logger = new Logger('MainController');
     }
 
@@ -31,7 +33,7 @@ class MainController {
             // Process the rules through the validation controller
             const processedRules = this.dreValidationController.validateAndProcessRules(parsedJson);
 
-            // get the first processed rules if there are any
+            // Get the first processed rule if there are any
             let firstProcessedRule;
             try {
                 firstProcessedRule = JSON.parse(processedRules)[0];
@@ -44,24 +46,24 @@ class MainController {
 
             this.logger.debug('First processed rule', { firstProcessedRule });
 
-            // Translate the first processed rule to a Flow
-            const flowPath = await this.dreRuleTranslationController.generateFlowMetadata(firstProcessedRule);
+            // Get flow criteria using DRETranslationController
+            const flowCriteria = await this.dreTranslationController.translateRule(firstProcessedRule);
+            this.logger.debug('Flow criteria generated', JSON.stringify(flowCriteria, null, 2));
+
+            // Generate and save flow using FlowGenerationController
+            const flowResult = await this.flowGenerationController.generateAndSaveFlow(flowCriteria);
+            this.logger.debug('Flow generated and saved', {
+                fileName: flowResult.filename,
+                path: flowResult.path
+            });
 
             this.logger.info('JSON processing completed successfully');
 
-            // Read flow content
-            try {
-                const flowContent = await fs.readFile(flowPath, 'utf8');
-                const flowFileName = path.basename(flowPath);
-
-                res.json({
-                    success: true,
-                    fileName: flowFileName,
-                    flowContent: flowContent
-                });
-            } catch (fileError) {
-                throw new Error(`Error reading flow file: ${fileError.message}`);
-            }
+            res.json({
+                success: true,
+                fileName: flowResult.filename,
+                flowContent: flowResult.flowContent
+            });
 
         } catch (error) {
             this.logger.error('Failed to process JSON input', error);

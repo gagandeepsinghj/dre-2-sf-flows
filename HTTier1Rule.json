@@ -1,0 +1,942 @@
+[
+  {
+    "attributes": {
+      "type": "DRE__DRE_Rule__c",
+      "url": "/services/data/v62.0/sobjects/DRE__DRE_Rule__c/a1tKh00000178G5IAI"
+    },
+    "Id": "a1tKh00000178G5IAI",
+    "Name": "HT Tier 1 - Permit - Generate Electrical Review when Electrical Review is req",
+    "DRE__Description__c": "Tier 1 - This rule generates a hardcoded Electrical review when it is required on the permit",
+    "DRE__Effective_Start_Date__c": "2020-02-18",
+    "DRE__Event__c": "Edited",
+    "DRE__IsActive__c": true,
+    "DRE__Object_Name__c": "MUSW__Permit2__c",
+    "DRE__Order__c": 999,
+    "DRE__Run_Once__c": false,
+    "DRE__Title__c": "<a href=\"/a1tKh00000178G5\" target=\"_blank\">HT Tier 1 - Permit - Generate Electrical Review when Electrical Review is req</a> - MUSW__Permit2__c Edited (Type: Automation, Order: 999, Active)",
+    "DRE__Type__c": "Automation",
+    "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:27:40:359 -999976632",
+    "DRE__Batch_Randomize_Percentage__c": 100,
+    "DRE__Batch_Randomize_Rounding_Method__c": "CEILING",
+    "DRE__Batch_Size__c": 50,
+    "DRE__Batch_Threshold_Maximum__c": 50000000,
+    "DRE__Batch_Threshold_Minimum__c": 1,
+    "DRE__Field_Index__c": null,
+    "DRE__IsRecalculated__c": false,
+    "DRE__Run_in_Bulk_Mode__c": false,
+    "DRE__DRE_Result_Groups__r": {
+      "totalSize": 1,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zCIAQ"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+          "Id": "a1rKh000001b1zCIAQ",
+          "Name": "DRERESG-00009855",
+          "DRE__Action_Type__c": "CreateRecord",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Review__c",
+          "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+          "DRE__Object_Relationship__c": "Children",
+          "DRE__Remove_From_Recycle_Bin__c": false,
+          "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:27:40:544 -1348266291"
+        }
+      ]
+    },
+    "DRE__DRE_Results__r": {
+      "totalSize": 3,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYvyIAG"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+          "Id": "a1sKh000007LYvyIAG",
+          "Name": "DRERSLT-00025160",
+          "DRE__DRE_Group__c": "a1rKh000001b1zCIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__type__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Electrical Review",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zCIAQ"
+            },
+            "Id": "a1rKh000001b1zCIAQ",
+            "Name": "DRERESG-00009855",
+            "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:27:40:544 -1348266291"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYw0IAG"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+          "Id": "a1sKh000007LYw0IAG",
+          "Name": "DRERSLT-00025162",
+          "DRE__DRE_Group__c": "a1rKh000001b1zCIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__status__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Pending",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zCIAQ"
+            },
+            "Id": "a1rKh000001b1zCIAQ",
+            "Name": "DRERESG-00009855",
+            "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:27:40:544 -1348266291"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYw1IAG"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+          "Id": "a1sKh000007LYw1IAG",
+          "Name": "DRERSLT-00025163",
+          "DRE__DRE_Group__c": "a1rKh000001b1zCIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__permit2__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "{!MUSW__Permit2__c.Id}",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zCIAQ"
+            },
+            "Id": "a1rKh000001b1zCIAQ",
+            "Name": "DRERESG-00009855",
+            "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:27:40:544 -1348266291"
+          }
+        }
+      ]
+    },
+    "DRE__DRE_Filters__r": {
+      "totalSize": 1,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttefIAA"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+          "Id": "a1qKh000005ttefIAA",
+          "Name": "DREFLTR-00027828",
+          "DRE__DRE_Group__c": "a1pKh00000DEuzuIAD",
+          "DRE__Field__c": "MUSW__Phase__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Review",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuzuIAD"
+            },
+            "Id": "a1pKh00000DEuzuIAD",
+            "Name": "DREFLTG-00009200",
+            "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Permit2__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c}",
+            "DRE__Object_Relationship__c": "Record",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:27:40:420 1403199098",
+            "DRE__Type__c": "Normal"
+          }
+        }
+      ]
+    },
+    "DRE__DRE_Filter_Groups__r": {
+      "totalSize": 1,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuzuIAD"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178G5IAI",
+          "Id": "a1pKh00000DEuzuIAD",
+          "Name": "DREFLTG-00009200",
+          "DRE__Condition__c": "Exists",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Permit2__c",
+          "DRE__Object_Path__c": "{!MUSW__Permit2__c}",
+          "DRE__Object_Relationship__c": "Record",
+          "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:27:40:420 1403199098",
+          "DRE__Type__c": "Normal"
+        }
+      ]
+    }
+  },
+  {
+    "attributes": {
+      "type": "DRE__DRE_Rule__c",
+      "url": "/services/data/v62.0/sobjects/DRE__DRE_Rule__c/a1tKh00000178GFIAY"
+    },
+    "Id": "a1tKh00000178GFIAY",
+    "Name": "HT Tier 3 - Permit - Generate Electrical Review when Electrical Review is req",
+    "DRE__Description__c": "Tier 3 - This rule generates a Electrical review based on a Review Template when it is required on the permit and populates due dates based on a formula",
+    "DRE__Effective_Start_Date__c": "2020-02-18",
+    "DRE__Event__c": "Edited",
+    "DRE__IsActive__c": true,
+    "DRE__Object_Name__c": "MUSW__Permit2__c",
+    "DRE__Order__c": 999,
+    "DRE__Run_Once__c": false,
+    "DRE__Title__c": "<a href=\"/a1tKh00000178GF\" target=\"_blank\">HT Tier 3 - Permit - Generate Electrical Review when Electrical Review is req</a> - MUSW__Permit2__c Edited (Type: Automation, Order: 999, Active)",
+    "DRE__Type__c": "Automation",
+    "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:838 1123820753",
+    "DRE__Batch_Randomize_Percentage__c": 100,
+    "DRE__Batch_Randomize_Rounding_Method__c": "CEILING",
+    "DRE__Batch_Size__c": 50,
+    "DRE__Batch_Threshold_Maximum__c": 50000000,
+    "DRE__Batch_Threshold_Minimum__c": 1,
+    "DRE__Field_Index__c": null,
+    "DRE__IsRecalculated__c": false,
+    "DRE__Run_in_Bulk_Mode__c": false,
+    "DRE__DRE_Result_Groups__r": {
+      "totalSize": 1,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zMIAQ"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1rKh000001b1zMIAQ",
+          "Name": "DRERESG-00009857",
+          "DRE__Action_Type__c": "CreateRecord",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Review__c",
+          "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+          "DRE__Object_Relationship__c": "Children",
+          "DRE__Remove_From_Recycle_Bin__c": false,
+          "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:976 -1966458542"
+        }
+      ]
+    },
+    "DRE__DRE_Results__r": {
+      "totalSize": 4,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYw8IAG"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1sKh000007LYw8IAG",
+          "Name": "DRERSLT-00025167",
+          "DRE__DRE_Group__c": "a1rKh000001b1zMIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__type__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "{!$MUSW__Review_Template__c.musw__review_type__c}",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zMIAQ"
+            },
+            "Id": "a1rKh000001b1zMIAQ",
+            "Name": "DRERESG-00009857",
+            "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:976 -1966458542"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYw9IAG"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1sKh000007LYw9IAG",
+          "Name": "DRERSLT-00025168",
+          "DRE__DRE_Group__c": "a1rKh000001b1zMIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__status__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Pending",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zMIAQ"
+            },
+            "Id": "a1rKh000001b1zMIAQ",
+            "Name": "DRERESG-00009857",
+            "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:976 -1966458542"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYwAIAW"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1sKh000007LYwAIAW",
+          "Name": "DRERSLT-00025169",
+          "DRE__DRE_Group__c": "a1rKh000001b1zMIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__permit2__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "{!MUSW__Permit2__c.Id}",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zMIAQ"
+            },
+            "Id": "a1rKh000001b1zMIAQ",
+            "Name": "DRERESG-00009857",
+            "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:976 -1966458542"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYwDIAW"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1sKh000007LYwDIAW",
+          "Name": "DRERSLT-00025170",
+          "DRE__DRE_Group__c": "a1rKh000001b1zMIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__due_date__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "TODAY()",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zMIAQ"
+            },
+            "Id": "a1rKh000001b1zMIAQ",
+            "Name": "DRERESG-00009857",
+            "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:976 -1966458542"
+          }
+        }
+      ]
+    },
+    "DRE__DRE_Filters__r": {
+      "totalSize": 5,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttgmIAA"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1qKh000005ttgmIAA",
+          "Name": "DREFLTR-00027837",
+          "DRE__DRE_Group__c": "a1pKh00000DEv09IAD",
+          "DRE__Field__c": "MUSW__Phase__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Review",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv09IAD"
+            },
+            "Id": "a1pKh00000DEv09IAD",
+            "Name": "DREFLTG-00009205",
+            "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Permit2__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c}",
+            "DRE__Object_Relationship__c": "Record",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:891 2138131322",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttgnIAA"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1qKh000005ttgnIAA",
+          "Name": "DREFLTR-00027838",
+          "DRE__DRE_Group__c": "a1pKh00000DEv09IAD",
+          "DRE__Field__c": "recordtypeid",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Trade Permit",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv09IAD"
+            },
+            "Id": "a1pKh00000DEv09IAD",
+            "Name": "DREFLTG-00009205",
+            "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Permit2__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c}",
+            "DRE__Object_Relationship__c": "Record",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:891 2138131322",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttgoIAA"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1qKh000005ttgoIAA",
+          "Name": "DREFLTR-00027839",
+          "DRE__DRE_Group__c": "a1pKh00000DEv0AIAT",
+          "DRE__Field__c": "musw__active__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "true",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv0AIAT"
+            },
+            "Id": "a1pKh00000DEv0AIAT",
+            "Name": "DREFLTG-00009206",
+            "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review_Template__c",
+            "DRE__Object_Path__c": "{!$MUSW__Review_Template__c}",
+            "DRE__Object_Relationship__c": "Global",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:938 1006020339",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttgpIAA"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1qKh000005ttgpIAA",
+          "Name": "DREFLTR-00027840",
+          "DRE__DRE_Group__c": "a1pKh00000DEv0AIAT",
+          "DRE__Field__c": "musw__object_record_types__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Permit Review",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv0AIAT"
+            },
+            "Id": "a1pKh00000DEv0AIAT",
+            "Name": "DREFLTG-00009206",
+            "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review_Template__c",
+            "DRE__Object_Path__c": "{!$MUSW__Review_Template__c}",
+            "DRE__Object_Relationship__c": "Global",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:938 1006020339",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttgqIAA"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1qKh000005ttgqIAA",
+          "Name": "DREFLTR-00027841",
+          "DRE__DRE_Group__c": "a1pKh00000DEv0AIAT",
+          "DRE__Field__c": "name",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Electrical Review for Trade Permit",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv0AIAT"
+            },
+            "Id": "a1pKh00000DEv0AIAT",
+            "Name": "DREFLTG-00009206",
+            "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review_Template__c",
+            "DRE__Object_Path__c": "{!$MUSW__Review_Template__c}",
+            "DRE__Object_Relationship__c": "Global",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:938 1006020339",
+            "DRE__Type__c": "Normal"
+          }
+        }
+      ]
+    },
+    "DRE__DRE_Filter_Groups__r": {
+      "totalSize": 2,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv09IAD"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1pKh00000DEv09IAD",
+          "Name": "DREFLTG-00009205",
+          "DRE__Condition__c": "Exists",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Permit2__c",
+          "DRE__Object_Path__c": "{!MUSW__Permit2__c}",
+          "DRE__Object_Relationship__c": "Record",
+          "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:891 2138131322",
+          "DRE__Type__c": "Normal"
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv0AIAT"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GFIAY",
+          "Id": "a1pKh00000DEv0AIAT",
+          "Name": "DREFLTG-00009206",
+          "DRE__Condition__c": "Exists",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Review_Template__c",
+          "DRE__Object_Path__c": "{!$MUSW__Review_Template__c}",
+          "DRE__Object_Relationship__c": "Global",
+          "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 17:28:24:938 1006020339",
+          "DRE__Type__c": "Normal"
+        }
+      ]
+    }
+  },
+  {
+    "attributes": {
+      "type": "DRE__DRE_Rule__c",
+      "url": "/services/data/v62.0/sobjects/DRE__DRE_Rule__c/a1tKh00000178GAIAY"
+    },
+    "Id": "a1tKh00000178GAIAY",
+    "Name": "HT Tier 2 - Permit - Generate Electrical Review when Electrical Review is req",
+    "DRE__Description__c": "Tier 2 - This rule generates a Electrical review based on a Review Template when it is required on the permit",
+    "DRE__Effective_Start_Date__c": "2020-02-18",
+    "DRE__Event__c": "Edited",
+    "DRE__IsActive__c": true,
+    "DRE__Object_Name__c": "MUSW__Permit2__c",
+    "DRE__Order__c": 999,
+    "DRE__Run_Once__c": false,
+    "DRE__Title__c": "<a href=\"/a1tKh00000178GA\" target=\"_blank\">HT Tier 2 - Permit - Generate Electrical Review when Electrical Review is req</a> - MUSW__Permit2__c Edited (Type: Automation, Order: 999, Active)",
+    "DRE__Type__c": "Automation",
+    "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:39:58:477 -72734657",
+    "DRE__Batch_Randomize_Percentage__c": 100,
+    "DRE__Batch_Randomize_Rounding_Method__c": "CEILING",
+    "DRE__Batch_Size__c": 50,
+    "DRE__Batch_Threshold_Maximum__c": 50000000,
+    "DRE__Batch_Threshold_Minimum__c": 1,
+    "DRE__Field_Index__c": null,
+    "DRE__IsRecalculated__c": false,
+    "DRE__Run_in_Bulk_Mode__c": false,
+    "DRE__DRE_Result_Groups__r": {
+      "totalSize": 1,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zHIAQ"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1rKh000001b1zHIAQ",
+          "Name": "DRERESG-00009856",
+          "DRE__Action_Type__c": "CreateRecord",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Review__c",
+          "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+          "DRE__Object_Relationship__c": "Children",
+          "DRE__Remove_From_Recycle_Bin__c": false,
+          "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:39:58:604 -1691294332"
+        }
+      ]
+    },
+    "DRE__DRE_Results__r": {
+      "totalSize": 3,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYw3IAG"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1sKh000007LYw3IAG",
+          "Name": "DRERSLT-00025164",
+          "DRE__DRE_Group__c": "a1rKh000001b1zHIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__type__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "{!$MUSW__Review_Template__c.musw__review_type__c}",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zHIAQ"
+            },
+            "Id": "a1rKh000001b1zHIAQ",
+            "Name": "DRERESG-00009856",
+            "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:39:58:604 -1691294332"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYw4IAG"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1sKh000007LYw4IAG",
+          "Name": "DRERSLT-00025165",
+          "DRE__DRE_Group__c": "a1rKh000001b1zHIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__status__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Pending",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zHIAQ"
+            },
+            "Id": "a1rKh000001b1zHIAQ",
+            "Name": "DRERESG-00009856",
+            "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:39:58:604 -1691294332"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Result__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Result__c/a1sKh000007LYw5IAG"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1sKh000007LYw5IAG",
+          "Name": "DRERSLT-00025166",
+          "DRE__DRE_Group__c": "a1rKh000001b1zHIAQ",
+          "DRE__Check_Duplicate__c": false,
+          "DRE__Field__c": "musw__permit2__c",
+          "DRE__IsActive__c": true,
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "{!MUSW__Permit2__c.Id}",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Result_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Result_Group__c/a1rKh000001b1zHIAQ"
+            },
+            "Id": "a1rKh000001b1zHIAQ",
+            "Name": "DRERESG-00009856",
+            "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+            "DRE__Action_Type__c": "CreateRecord",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c.MUSW__Reviews__r}",
+            "DRE__Object_Relationship__c": "Children",
+            "DRE__Remove_From_Recycle_Bin__c": false,
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:39:58:604 -1691294332"
+          }
+        }
+      ]
+    },
+    "DRE__DRE_Filters__r": {
+      "totalSize": 5,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttekIAA"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1qKh000005ttekIAA",
+          "Name": "DREFLTR-00027832",
+          "DRE__DRE_Group__c": "a1pKh00000DEuzzIAD",
+          "DRE__Field__c": "MUSW__Phase__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Review",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuzzIAD"
+            },
+            "Id": "a1pKh00000DEuzzIAD",
+            "Name": "DREFLTG-00009203",
+            "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Permit2__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c}",
+            "DRE__Object_Relationship__c": "Record",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:39:58:545 241169782",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttgDIAQ"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1qKh000005ttgDIAQ",
+          "Name": "DREFLTR-00027833",
+          "DRE__DRE_Group__c": "a1pKh00000DEuzzIAD",
+          "DRE__Field__c": "recordtypeid",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Trade Permit",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuzzIAD"
+            },
+            "Id": "a1pKh00000DEuzzIAD",
+            "Name": "DREFLTG-00009203",
+            "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Permit2__c",
+            "DRE__Object_Path__c": "{!MUSW__Permit2__c}",
+            "DRE__Object_Relationship__c": "Record",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:39:58:545 241169782",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttgEIAQ"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1qKh000005ttgEIAQ",
+          "Name": "DREFLTR-00027834",
+          "DRE__DRE_Group__c": "a1pKh00000DEv04IAD",
+          "DRE__Field__c": "musw__active__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "true",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv04IAD"
+            },
+            "Id": "a1pKh00000DEv04IAD",
+            "Name": "DREFLTG-00009204",
+            "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review_Template__c",
+            "DRE__Object_Path__c": "{!$MUSW__Review_Template__c}",
+            "DRE__Object_Relationship__c": "Global",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:52:20:422 694510058",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttgFIAQ"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1qKh000005ttgFIAQ",
+          "Name": "DREFLTR-00027835",
+          "DRE__DRE_Group__c": "a1pKh00000DEv04IAD",
+          "DRE__Field__c": "musw__object_record_types__c",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Permit Review",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv04IAD"
+            },
+            "Id": "a1pKh00000DEv04IAD",
+            "Name": "DREFLTG-00009204",
+            "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review_Template__c",
+            "DRE__Object_Path__c": "{!$MUSW__Review_Template__c}",
+            "DRE__Object_Relationship__c": "Global",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:52:20:422 694510058",
+            "DRE__Type__c": "Normal"
+          }
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter__c/a1qKh000005ttgGIAQ"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1qKh000005ttgGIAQ",
+          "Name": "DREFLTR-00027836",
+          "DRE__DRE_Group__c": "a1pKh00000DEv04IAD",
+          "DRE__Field__c": "name",
+          "DRE__IsActive__c": true,
+          "DRE__Operator__c": "=",
+          "DRE__Order__c": 1,
+          "DRE__Value__c": "Electrical Review for Trade Permit",
+          "DRE__Type__c": "Normal",
+          "DRE__DRE_Group__r": {
+            "attributes": {
+              "type": "DRE__DRE_Filter_Group__c",
+              "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv04IAD"
+            },
+            "Id": "a1pKh00000DEv04IAD",
+            "Name": "DREFLTG-00009204",
+            "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+            "DRE__Condition__c": "Exists",
+            "DRE__IsActive__c": true,
+            "DRE__Object_Name__c": "MUSW__Review_Template__c",
+            "DRE__Object_Path__c": "{!$MUSW__Review_Template__c}",
+            "DRE__Object_Relationship__c": "Global",
+            "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:52:20:422 694510058",
+            "DRE__Type__c": "Normal"
+          }
+        }
+      ]
+    },
+    "DRE__DRE_Filter_Groups__r": {
+      "totalSize": 2,
+      "done": true,
+      "records": [
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEuzzIAD"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1pKh00000DEuzzIAD",
+          "Name": "DREFLTG-00009203",
+          "DRE__Condition__c": "Exists",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Permit2__c",
+          "DRE__Object_Path__c": "{!MUSW__Permit2__c}",
+          "DRE__Object_Relationship__c": "Record",
+          "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:39:58:545 241169782",
+          "DRE__Type__c": "Normal"
+        },
+        {
+          "attributes": {
+            "type": "DRE__DRE_Filter_Group__c",
+            "url": "/services/data/v62.0/sobjects/DRE__DRE_Filter_Group__c/a1pKh00000DEv04IAD"
+          },
+          "DRE__DRE_Rule__c": "a1tKh00000178GAIAY",
+          "Id": "a1pKh00000DEv04IAD",
+          "Name": "DREFLTG-00009204",
+          "DRE__Condition__c": "Exists",
+          "DRE__IsActive__c": true,
+          "DRE__Object_Name__c": "MUSW__Review_Template__c",
+          "DRE__Object_Path__c": "{!$MUSW__Review_Template__c}",
+          "DRE__Object_Relationship__c": "Global",
+          "DRE__Uid__c": "bgstaging@basicgov.com 2024-12-09 16:52:20:422 694510058",
+          "DRE__Type__c": "Normal"
+        }
+      ]
+    }
+  }
+]
