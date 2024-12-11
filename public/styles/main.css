@@ -5,6 +5,11 @@ body {
     background-color: #f0f2f5;
     height: 100vh;
     overflow: hidden;
+    background-image: url(https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2024/01/our-story-marquee-bg_0fb915.jpg?w=1024);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #fdfeff;
 }
 
 .container {
