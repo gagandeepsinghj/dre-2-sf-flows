@@ -23,7 +23,7 @@ This guide outlines the requirements and best practices for generating deployabl
   9. start
   10. status
   11. variables
-  12. decisions
+  12. decisions (only when necessary)
   13. assignments (only when necessary)
   14. formulas
 - Terminators must not be used as they are not valid in AutoLaunchedFlow type
@@ -74,6 +74,7 @@ This guide outlines the requirements and best practices for generating deployabl
   - References must be case-sensitive exact matches
   - No dangling or invalid references allowed
   - All referenced elements must be defined before being referenced
+  - remove any connector whose targetReference does not exist as element name
 - Assignment Validation:
   - Each assignment element MUST contain at least one assignmentItems element
   - assignmentItems must specify:
@@ -100,6 +101,9 @@ This guide outlines the requirements and best practices for generating deployabl
     </assignmentItems>
 </assignments>
 ```
+
+### 6. Decision Element Generation 
+- Do not generate "Success Decision"
 
 ## Use Cases
 
