@@ -1,6 +1,4 @@
 const jsforce = require('jsforce');
-const fs = require('fs').promises;
-const path = require('path');
 const AdmZip = require('adm-zip');
 const Logger = require('../helpers/Logger');
 
@@ -15,27 +13,34 @@ class FlowDeploymentController {
 
     /**
      * @description Deploys a Flow metadata file to Salesforce org using Metadata API
-     * @param {Object} req - Express request object
+     * @param {Object} req - Express request object with filename and flowContent
      * @param {Object} res - Express response object
      * @returns {Promise<void>}
      */
     async deployFlow(req, res) {
         this.logger.info('Starting Flow deployment process');
         try {
+            // Validate request payload
+            if (!req.body || !req.body.filename || !req.body.flowContent) {
+                throw new Error('Request must include filename and flowContent');
+            }
+
+            const { filename, flowContent } = req.body;
+
+            // Validate filename format
+            if (!filename.endsWith('.flow-meta.xml')) {
+                throw new Error('Invalid filename format. Must end with .flow-meta.xml');
+            }
             // Connect to Salesforce
             const conn = await this._getSalesforceConnection();
             this.logger.debug('Connected to Salesforce successfully');
 
-            // Read the flow metadata file
-            const flowMetadata = await this._readFlowMetadata();
-            this.logger.debug('Flow metadata file read successfully');
-
-            // Get flow API name from file name
-            const flowApiName = this._extractFlowApiName();
+            // Get flow API name from filename
+            const flowApiName = filename.replace('.flow-meta.xml', '');
             this.logger.debug('Flow API name extracted', { flowApiName });
 
             // Create deployment zip
-            const zipBuffer = await this._createDeploymentZip(flowMetadata, flowApiName);
+            const zipBuffer = await this._createDeploymentZip(flowContent, flowApiName);
             this.logger.debug('Deployment zip created successfully');
 
             // Deploy the flow using Metadata API
@@ -109,45 +114,6 @@ class FlowDeploymentController {
         } catch (error) {
             this.logger.error('Failed to connect to Salesforce', error);
             throw new Error(`Salesforce connection failed: ${error.message}`);
-        }
-    }
-
-    /**
-     * @private
-     * @description Reads the Flow metadata file from the filesystem
-     * @returns {Promise<string>} Flow metadata XML content
-     */
-    async _readFlowMetadata() {
-        try {
-            // get flow metadata file path from .env file
-            const flowMetaPath = path.join(__dirname, '../../', process.env.FLOW_META_PATH);
-            const content = await fs.readFile(flowMetaPath, 'utf8');
-            // Remove BOM if present and trim any whitespace
-            return content.replace(/^\uFEFF/, '').trim();
-        } catch (error) {
-            this.logger.error('Failed to read Flow metadata file', error);
-            throw new Error(`Flow metadata file read failed: ${error.message}`);
-        }
-    }
-
-    /**
-     * @private
-     * @description Extracts Flow API name from the file name
-     * @returns {string} Flow API name
-     */
-    _extractFlowApiName() {
-        try {
-            const fileName = process.env.FLOW_META_PATH;
-            const apiName = path.basename(fileName, '.flow-meta.xml');
-
-            if (!apiName) {
-                throw new Error('Could not extract Flow API name from file name');
-            }
-
-            return apiName;
-        } catch (error) {
-            this.logger.error('Failed to extract Flow API name', error);
-            throw new Error(`Flow API name extraction failed: ${error.message}`);
         }
     }
 

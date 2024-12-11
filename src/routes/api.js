@@ -19,7 +19,7 @@ router.post('/migrate-dre-rule', mainController.processJsonInput.bind(mainContro
 // DRE Results Translation endpoint
 router.get('/translate-dre-results', dreResultTranslationController.translateResultsToFlowNodes.bind(dreResultTranslationController));
 
-// Flow Deployment endpoint
-router.get('/deploy-flow', flowDeploymentController.deployFlow.bind(flowDeploymentController));
+// Flow Deployment endpoint - changed to POST since it needs request body
+router.post('/deploy-flow', flowDeploymentController.deployFlow.bind(flowDeploymentController));
 
 module.exports = router;
